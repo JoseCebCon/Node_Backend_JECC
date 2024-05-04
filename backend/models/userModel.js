@@ -6,6 +6,11 @@
         required: [true, "Por favor poner el nombre"]
     },
 
+    apellido: {
+        type: String,
+        required: [true, "Por favor poner el apellido"]
+    },
+
     email:{
         type: String,
         required: [true, "Por favor teclea tu email"],

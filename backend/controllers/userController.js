@@ -6,10 +6,10 @@ const User = require('../models/userModel')
 
 const register = asyncHandler( async (req, res) => {
     //Desestructurar un objeto
-    const {name, email, password} = req.body
+    const {name, apellido, email, password} = req.body
 
     //Verificar los datos
-    if(!name || !email || !password){
+    if(!name || !apellido || !email || !password){
         res.status(400)
         throw new Error('Faltan datos')
     }
@@ -28,6 +28,7 @@ const register = asyncHandler( async (req, res) => {
     //Crear el usuario
     const user = await User.create({
         name,
+        apellido,
         email,
         password: hashedPassword
     })
@@ -44,6 +45,7 @@ const login = asyncHandler( async(req, res) => {
         res.status(200).json({
             _id: user.id,
             name: user.name,
+            apellido: user.apellido,
             email: user.email,
             token: generarToken(user.id)
         })
